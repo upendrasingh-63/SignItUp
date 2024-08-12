@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignItUp: Personalized Online Signature Maker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>SignItUp: Create Your Online Signature</h1>
+
+        <div class="signature-pad">
+            <canvas id="signatureCanvas"></canvas>
+        </div>
+
+        <div class="controls">
+            <label for="colorPicker">Choose Pen Color:</label>
+            <input type="color" id="colorPicker" value="#000000">
+            
+            <label for="backgroundColorPicker">Background Color:</label>
+            <input type="color" id="backgroundColorPicker" value="#ffffff" disabled>
+            
+            <input type="checkbox" id="transparentBackground" checked>
+            <label for="transparentBackground">Save without Background</label>
+
+            <button id="clearButton">Clear</button>
+            <button id="saveButton">Save</button>
+        </div>
+        <div class="statistics">
+            <p>Total Visitors: <span id="visitorCount">0</span></p>
+            <p>Total Downloads: <span id="downloadCount">0</span></p>
+            <p>&copy; 2024 Upendra Singh</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+</body>
+</html>
