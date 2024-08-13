@@ -81,12 +81,25 @@ window.onload = function () {
     });
 
     saveButton.addEventListener('click', () => {
+        if (!transparentBackgroundCheckbox.checked) {
+            // Save with background color
+            ctx.globalCompositeOperation = 'destination-over';
+            ctx.fillStyle = backgroundColorPicker.value;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        } else {
+            ctx.globalCompositeOperation = 'source-over';
+        }
+
         const dataURL = canvas.toDataURL('image/png');
         const link = document.createElement('a');
         link.href = dataURL;
         link.download = 'signature.png';
         link.click();
-        incrementDownloadCount();
+
+        // Reset the canvas if background color was applied
+        if (!transparentBackgroundCheckbox.checked) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
     });
     // Display visitor and download counts
     visitorCountRef.on('value', (snapshot) => {
